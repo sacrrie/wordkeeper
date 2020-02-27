@@ -7,12 +7,12 @@ buildscript {
         minSdkVersion = 19
         targetSdkVersion = 28
 
-        materialVersion = '1.1.0-beta02'
+        materialVersion = '1.1.0'
         appCompatVersion = '1.1.0'
         recyclerViewVersion = '1.1.0'
-        leakCanaryVersion = "2.0"
-        crashlyticsVersion = "2.9.9"
-        androidGradleVersion = '3.5.3'
+        leakCanaryVersion = "2.2"
+        crashlyticsVersion = "2.10.1"
+        androidGradleVersion = '3.6.0'
         fabricVersion = '1.29.0'
     }
 
