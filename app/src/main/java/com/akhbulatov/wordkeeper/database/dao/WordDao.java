@@ -18,7 +18,7 @@ package com.akhbulatov.wordkeeper.database.dao;
 
 import android.database.Cursor;
 
-import com.akhbulatov.wordkeeper.model.Word;
+import com.akhbulatov.wordkeeper.domain.common.models.Word;
 
 /**
  * @author Alidibir Akhbulatov

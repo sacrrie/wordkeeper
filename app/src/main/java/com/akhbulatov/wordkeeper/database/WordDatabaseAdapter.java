@@ -23,7 +23,7 @@ import android.util.Log;
 
 import com.akhbulatov.wordkeeper.database.DatabaseContract.WordEntry;
 import com.akhbulatov.wordkeeper.database.dao.WordDao;
-import com.akhbulatov.wordkeeper.model.Word;
+import com.akhbulatov.wordkeeper.domain.common.models.Word;
 
 /**
  * @author Alidibir Akhbulatov
@@ -100,11 +100,11 @@ public class WordDatabaseAdapter extends DatabaseAdapter implements WordDao {
 
         try {
             cursor.moveToFirst();
-            word = new Word();
-            word.setId(cursor.getLong(cursor.getColumnIndex(WordEntry._ID)));
-            word.setName(cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_NAME)));
-            word.setTranslation(cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_TRANSLATION)));
-            word.setCategory(cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_CATEGORY)));
+            long wordId = cursor.getLong(cursor.getColumnIndex(WordEntry._ID));
+            String name = cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_NAME));
+            String translation = cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_TRANSLATION));
+            String category = cursor.getString(cursor.getColumnIndex(WordEntry.COLUMN_CATEGORY));
+            word = new Word(wordId, name, translation, category);
         } catch (Exception e) {
             Log.e(TAG, "Could not get the record");
         } finally {

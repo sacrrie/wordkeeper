@@ -23,7 +23,7 @@ import android.util.Log;
 
 import com.akhbulatov.wordkeeper.database.DatabaseContract.CategoryEntry;
 import com.akhbulatov.wordkeeper.database.dao.CategoryDao;
-import com.akhbulatov.wordkeeper.model.Category;
+import com.akhbulatov.wordkeeper.domain.common.models.Category;
 
 /**
  * @author Alidibir Akhbulatov
@@ -85,9 +85,9 @@ public class CategoryDatabaseAdapter extends DatabaseAdapter implements Category
 
         try {
             cursor.moveToFirst();
-            category = new Category();
-            category.setId(cursor.getLong(cursor.getColumnIndex(CategoryEntry._ID)));
-            category.setName(cursor.getString(cursor.getColumnIndex(CategoryEntry.COLUMN_NAME)));
+            long categoryId = cursor.getLong(cursor.getColumnIndex(CategoryEntry._ID));
+            String name = cursor.getString(cursor.getColumnIndex(CategoryEntry.COLUMN_NAME));
+            category = new Category(categoryId, name);
         } catch (Exception e) {
             Log.e(TAG, "Could not get the record");
         } finally {

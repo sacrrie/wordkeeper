@@ -42,8 +42,8 @@ import com.akhbulatov.wordkeeper.database.CategoryDatabaseAdapter;
 import com.akhbulatov.wordkeeper.database.DatabaseContract.CategoryEntry;
 import com.akhbulatov.wordkeeper.database.DatabaseContract.WordEntry;
 import com.akhbulatov.wordkeeper.database.WordDatabaseAdapter;
-import com.akhbulatov.wordkeeper.model.Category;
-import com.akhbulatov.wordkeeper.model.Word;
+import com.akhbulatov.wordkeeper.domain.common.models.Category;
+import com.akhbulatov.wordkeeper.domain.common.models.Word;
 import com.akhbulatov.wordkeeper.ui.activity.CategoryContentActivity;
 import com.akhbulatov.wordkeeper.ui.activity.MainActivity;
 import com.akhbulatov.wordkeeper.ui.dialog.CategoryDeleteDialog;
@@ -314,7 +314,8 @@ public class CategoryListFragment extends BaseFragment implements LoaderManager.
         if (TextUtils.isEmpty(name)) {
             CommonUtils.showToast(getActivity(), R.string.error_category_editor_empty_field);
         } else {
-            mCategoryDbAdapter.insert(new Category(name));
+            // TODO
+//            mCategoryDbAdapter.insert(new Category(name));
             mCategoryList.scrollToPosition(0);
             loaderManager.restartLoader(LOADER_ID, null, this);
         }
@@ -348,11 +349,13 @@ public class CategoryListFragment extends BaseFragment implements LoaderManager.
         WordAdapter wordAdapter = new WordAdapter(cursor);
         while (!cursor.isAfterLast()) {
             long id = wordAdapter.getItemId(cursor.getPosition());
-            mWordDbAdapter.delete(new Word(id));
+            // TODO
+//            mWordDbAdapter.delete(new Word(id));
             cursor.moveToNext();
         }
 
-        mCategoryDbAdapter.delete(new Category(mSelectedItemId));
+        // TODO
+//        mCategoryDbAdapter.delete(new Category(mSelectedItemId));
         loaderManager.restartLoader(LOADER_ID, null, this);
     }
 

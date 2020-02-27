@@ -40,8 +40,8 @@ import com.akhbulatov.wordkeeper.adapter.WordAdapter;
 import com.akhbulatov.wordkeeper.database.CategoryDatabaseAdapter;
 import com.akhbulatov.wordkeeper.database.DatabaseContract.WordEntry;
 import com.akhbulatov.wordkeeper.database.WordDatabaseAdapter;
-import com.akhbulatov.wordkeeper.model.Category;
-import com.akhbulatov.wordkeeper.model.Word;
+import com.akhbulatov.wordkeeper.domain.common.models.Category;
+import com.akhbulatov.wordkeeper.domain.common.models.Word;
 import com.akhbulatov.wordkeeper.ui.activity.MainActivity;
 import com.akhbulatov.wordkeeper.ui.dialog.CategoryListDialog;
 import com.akhbulatov.wordkeeper.ui.dialog.WordSortDialog;
@@ -332,7 +332,8 @@ public class WordListFragment extends BaseFragment implements LoaderManager.Load
                 | (TextUtils.isEmpty(name) | TextUtils.isEmpty(translation))) {
             CommonUtils.showToast(getActivity(), R.string.error_word_editor_empty_fields);
         } else {
-            mWordDbAdapter.insert(new Word(name, translation, category));
+            // TODO
+//            mWordDbAdapter.insert(new Word(name, translation, category));
             // Checked for null in case this method is called from the screen "Categories"
             if (mWordList != null) {
                 mWordList.scrollToPosition(0);
@@ -393,7 +394,8 @@ public class WordListFragment extends BaseFragment implements LoaderManager.Load
 
     private void deleteWords(List<Integer> words) {
         for (Integer i : words) {
-            mWordDbAdapter.delete(new Word(mWordAdapter.getItemId(i)));
+            // TODO
+//            mWordDbAdapter.delete(new Word(mWordAdapter.getItemId(i)));
         }
         loaderManager.restartLoader(LOADER_ID, null, this);
     }
